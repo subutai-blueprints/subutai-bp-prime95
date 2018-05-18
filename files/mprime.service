@@ -3,7 +3,7 @@ Description=Run mprime
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/ipfs daemon
+ExecStart=/root/prime/mprime
 WorkingDirectory=/root/prime
 Restart=on-failure
 LimitNICE=+10

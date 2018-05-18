@@ -39,13 +39,13 @@
         "environmentName": {
             "description": "Enter the environment name",
             "type": "string",
-            "default": "nc",
+            "default": "prime95",
             "validation": "[a-zA-Z0-9]+"
         },
         "primeUser": {
             "description": "Enter the prime95 user",
             "type": "string",
-            "default": "nc",
+            "default": "lbthomsen",
             "validation": "[a-zA-Z0-9]+"
         }
     }
