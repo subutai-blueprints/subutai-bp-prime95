@@ -22,20 +22,8 @@
         "ansible-playbook": "site.yml",
         "extra-vars": [
             {
-                "key": "domain_name",
-                "value": "${domainName}"
-            }, 
-            {
-                "key": "db",
-                "value": "${db}"
-            }, 
-            {
-                "key": "db_user",
-                "value": "${dbUser}"
-            }, 
-            {
-                "key": "db_pwd",
-                "value": "${dbPwd}"
+                "key": "prime_user",
+                "value": "${primeUser}"
             }
         ],
         "groups": [
@@ -50,6 +38,12 @@
     "user-variables": {
         "environmentName": {
             "description": "Enter the environment name",
+            "type": "string",
+            "default": "nc",
+            "validation": "[a-zA-Z0-9]+"
+        },
+        "primeUser": {
+            "description": "Enter the prime95 user",
             "type": "string",
             "default": "nc",
             "validation": "[a-zA-Z0-9]+"
