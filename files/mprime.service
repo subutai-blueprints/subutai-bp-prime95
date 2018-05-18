@@ -1,0 +1,13 @@
+[Unit]
+Description=Run mprime
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/ipfs daemon
+WorkingDirectory=/root/prime
+Restart=on-failure
+LimitNICE=+10
+
+[Install]
+WantedBy=multi-user.target
+Alias=mprime.service

@@ -1,1 +1,1 @@
-ComputerID=$HOSTNAME
+ComputerID={{ ansible_hostname }}

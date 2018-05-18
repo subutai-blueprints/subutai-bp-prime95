@@ -3,7 +3,7 @@ WGUID_version=2
 StressTester=0
 UsePrimenet=1
 DialUp=0
-V5UserID=$USER
+V5UserID={{ prime_user }}
 AskedAboutMemory=1
 WorkPreference=0
 
