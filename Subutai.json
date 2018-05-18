@@ -37,6 +37,14 @@
                 "key": "db_pwd",
                 "value": "${dbPwd}"
             }
+        ],
+        "groups": [
+            {
+                "name": "p95",
+                "hostnames": [
+                    "p95"
+                ]
+            }
         ]
     },
     "user-variables": {
