@@ -51,7 +51,8 @@
         "primeUser": {
             "description": "Enter the prime95 user (leave empty for default)",
             "type": "string",
-            "default": "lbthomsen"
+            "default": "lbthomsen", 
+            "validation": "[a-zA-Z0-9]."
         }, 
         "containerSize": {
             "description": "Container Size",
