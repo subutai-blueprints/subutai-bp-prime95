@@ -1,15 +1,15 @@
 {
     "name": "${environmentName}",
     "description": "Prime95",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "author": "https://github.com/lbthomsen",
     "ssh-key": "lth", 
     "containers": [
         {
-            "hostname": "p95",
+            "hostname": "${hostName}",
             "template": "debian-stretch",
             "peer-criteria": "peers",
-            "size": "TINY"
+            "size": "${containerSize"
         }
     ],
     "peer-criteria": [
@@ -42,11 +42,23 @@
             "default": "prime95",
             "validation": "[a-zA-Z0-9]+"
         },
+        "hostName": {
+            "description": "Enter the hostname",
+            "type": "string",
+            "default": "p95",
+            "validation": "[a-zA-Z0-9]+"
+        },
         "primeUser": {
-            "description": "Enter the prime95 user",
+            "description": "Enter the prime95 user (leave empty for default)",
             "type": "string",
             "default": "lbthomsen",
-            "validation": "[a-zA-Z0-9]+"
+            "validation": "[a-zA-Z0-9]."
+        }, 
+        "containerSize": {
+            "description": "Container Size",
+            "type": "enum",
+            "default": "TINY",
+            "validation": "TINY,SMALL,MEDIUM,LARGE,HUGE"
         }
     }
 }
