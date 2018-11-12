@@ -1,32 +1,24 @@
-# Ansible Playbook for Subutai Nextcloud blueprint
+# Ansible Playbook for Subutai Prime95 blueprint
 ---
-
-- hosts: all
-  gather_facts: false
-  remote_user: root
-  tasks: 
-
-    - name: Update
-      raw: apt-get -y --allow-unauthenticated update || true
-
-    - name: Ensure python is available
-      raw: test -e /usr/bin/python || apt install -y --allow-unauthenticated python-minimal
-
-    - name: Ensure python-apt is available
-      raw: test -d /usr/share/python-apt || apt install -y --allow-unauthenticated python-apt
-
-    - name: Upgrade
-      raw: apt-get -y --allow-unauthenticated upgrade
 
 - hosts: p95
   remote_user: root
   tasks: 
 
-    - name: Install extra packages
-      apt:
-        name: "{{ item }}"
-      with_items: 
-        - unzip
+    - name: Disable dpkg fsync                                                                                                                                                                 
+      raw: test -e /etc/dpkg/dpkg.cfg.d/unsafe-io || echo force-unsafe-io > /etc/dpkg/dpkg.cfg.d/unsafe-io                                                                                     
+                                                                                                                                                                                               
+    - name: Upgrade debian                                                                                                                                                                     
+      apt:                                                                                                                                                                                     
+        update_cache: true                                                                                                                                                                     
+        upgrade: true                                                                                                                                                                          
+                                                                                                                                                                                               
+    - name: Install required debs                                                                                                                                                              
+      apt:                                                                                                                                                                                     
+        name: "{{ item }}"                                                                                                                                                                     
+        state: present                                                                                                                                                                         
+      with_items:                                                                                                                                                                              
+        - unzip                                                                                                                                                                                
 
     - name: Create /root/prime
       file: 
