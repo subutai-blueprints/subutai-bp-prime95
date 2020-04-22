@@ -38,7 +38,7 @@
         src: http://www.mersenne.org/ftp_root/gimps/p95v294b8.linux64.tar.gz
         dest: /root/prime
         remote_src: yes
-      creates: /root/prime/mprime
+        creates: /root/prime/mprime
 
     - name: Create prime.txt
       template:
