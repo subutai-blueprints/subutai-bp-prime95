@@ -1,13 +1,12 @@
 {
     "name": "${environmentName}",
     "description": "Prime95",
-    "version": "1.0.1",
+    "version": "2.0.0",
     "author": "https://github.com/lbthomsen",
-    "ssh-key": "lth", 
     "containers": [
         {
             "hostname": "${hostName}",
-            "template": "debian-stretch",
+            "template": "debian-buster",
             "peer-criteria": "peers",
             "size": "${containerSize}"
         }

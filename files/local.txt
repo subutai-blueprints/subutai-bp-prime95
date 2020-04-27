@@ -1,1 +1,2 @@
 ComputerID={{ ansible_hostname }}
+Memory=512 during 7:30-23:30 else 512

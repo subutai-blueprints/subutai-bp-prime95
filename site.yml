@@ -1,32 +1,20 @@
-# Ansible Playbook for Subutai Nextcloud blueprint
+# Ansible Playbook for Subutai Prime95 blueprint
 ---
-
-- hosts: all
-  gather_facts: false
-  remote_user: root
-  tasks: 
-
-    - name: Update
-      raw: apt-get -y --allow-unauthenticated update || true
-
-    - name: Ensure python is available
-      raw: test -e /usr/bin/python || apt install -y --allow-unauthenticated python-minimal
-
-    - name: Ensure python-apt is available
-      raw: test -d /usr/share/python-apt || apt install -y --allow-unauthenticated python-apt
-
-    - name: Upgrade
-      raw: apt-get -y --allow-unauthenticated upgrade
 
 - hosts: p95
   remote_user: root
   tasks: 
 
-    - name: Install extra packages
-      apt:
-        name: "{{ item }}"
-      with_items: 
-        - unzip
+    - name: Upgrade debian                                                                                                                                                                     
+      apt:                                                                                                                                                                                     
+        update_cache: true                                                                                                                                                                     
+        upgrade: "yes" 
+
+    - name: Install required debs                                                                                                                                                              
+      apt:                                                                                                                                                                                     
+        name: 
+          - libxml2
+        state: present                                                                                                                                                                         
 
     - name: Create /root/prime
       file: 
@@ -35,7 +23,7 @@
 
     - name: Fetch prime95
       unarchive: 
-        src: http://www.mersenne.org/ftp_root/gimps/p95v294b8.linux64.tar.gz
+        src: http://www.mersenne.org/ftp_root/gimps/p95v298b6.linux64.tar.gz
         dest: /root/prime
         remote_src: yes
         creates: /root/prime/mprime
