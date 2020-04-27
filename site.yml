@@ -13,7 +13,7 @@
     - name: Install required debs                                                                                                                                                              
       apt:                                                                                                                                                                                     
         name: 
-          - unzip
+          - libxml2
         state: present                                                                                                                                                                         
 
     - name: Create /root/prime
