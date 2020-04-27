@@ -8,7 +8,7 @@
     - name: Upgrade debian                                                                                                                                                                     
       apt:                                                                                                                                                                                     
         update_cache: true                                                                                                                                                                     
-        upgrade: "true" 
+        upgrade: "yes" 
 
     - name: Install required debs                                                                                                                                                              
       apt:                                                                                                                                                                                     
@@ -26,7 +26,7 @@
         src: http://www.mersenne.org/ftp_root/gimps/p95v298b6.linux64.tar.gz
         dest: /root/prime
         remote_src: yes
-      creates: /root/prime/mprime
+        creates: /root/prime/mprime
 
     - name: Create prime.txt
       template:
