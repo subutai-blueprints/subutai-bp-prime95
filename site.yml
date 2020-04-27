@@ -5,20 +5,16 @@
   remote_user: root
   tasks: 
 
-    - name: Disable dpkg fsync                                                                                                                                                                 
-      raw: test -e /etc/dpkg/dpkg.cfg.d/unsafe-io || echo force-unsafe-io > /etc/dpkg/dpkg.cfg.d/unsafe-io                                                                                     
-                                                                                                                                                                                               
     - name: Upgrade debian                                                                                                                                                                     
       apt:                                                                                                                                                                                     
         update_cache: true                                                                                                                                                                     
-        upgrade: true                                                                                                                                                                          
-                                                                                                                                                                                               
+        upgrade: "yes" 
+
     - name: Install required debs                                                                                                                                                              
       apt:                                                                                                                                                                                     
-        name: "{{ item }}"                                                                                                                                                                     
+        name: 
+          - libxml2
         state: present                                                                                                                                                                         
-      with_items:                                                                                                                                                                              
-        - unzip                                                                                                                                                                                
 
     - name: Create /root/prime
       file: 
@@ -27,10 +23,10 @@
 
     - name: Fetch prime95
       unarchive: 
-        src: http://www.mersenne.org/ftp_root/gimps/p95v294b8.linux64.tar.gz
+        src: http://www.mersenne.org/ftp_root/gimps/p95v298b6.linux64.tar.gz
         dest: /root/prime
         remote_src: yes
-      creates: /root/prime/mprime
+        creates: /root/prime/mprime
 
     - name: Create prime.txt
       template:
